@@ -1,22 +1,9 @@
 import * as actionTypes from '../../constants/actionTypes';
-import {
-  multiSelectBroadcastChange,
-  singleSelectBroadcastChange,
-} from '../onChangeBroadcasters';
+import { multiSelectBroadcastChange, singleSelectBroadcastChange } from '../onChangeBroadcasters';
 
 /* TODO add a test for this */
-export default function handleBlur({
-  state,
-  ReactResponsiveSelectClassRef,
-  props,
-}) {
-  const {
-    isOptionsPanelOpen,
-    disabled,
-    altered,
-    singleSelectSelectedOption,
-    multiSelectSelectedOptions,
-  } = state;
+export default function handleBlur({ state, ReactResponsiveSelectClassRef, props }) {
+  const { isOptionsPanelOpen, disabled, altered, singleSelectSelectedOption, multiSelectSelectedOptions } = state;
   const { onBlur, multiselect } = props;
 
   if (disabled) return;
@@ -34,19 +21,9 @@ export default function handleBlur({
 
   if (isOutsideSelectBox && onBlur) {
     if (multiselect) {
-      multiSelectBroadcastChange(
-        undefined,
-        multiSelectSelectedOptions.options,
-        altered,
-        onBlur,
-      );
+      multiSelectBroadcastChange(undefined, multiSelectSelectedOptions.options, altered, onBlur);
     } else {
-      singleSelectBroadcastChange(
-        undefined,
-        singleSelectSelectedOption,
-        altered,
-        onBlur,
-      );
+      singleSelectBroadcastChange(undefined, singleSelectSelectedOption, altered, onBlur);
     }
   }
 }

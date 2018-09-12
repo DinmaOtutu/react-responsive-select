@@ -2,17 +2,8 @@ import React, { Component } from 'react';
 import isEqual from 'lodash.isequal';
 import singleline from 'singleline';
 import * as actionTypes from './constants/actionTypes';
-import {
-  handleBlur,
-  handleClick,
-  handleKeyEvent,
-  handleTouchMove,
-  handleTouchStart,
-} from './lib/eventHandlers';
-import {
-  multiSelectBroadcastChange,
-  singleSelectBroadcastChange,
-} from './lib/onChangeBroadcasters';
+import { handleBlur, handleClick, handleKeyEvent, handleTouchMove, handleTouchStart } from './lib/eventHandlers';
+import { multiSelectBroadcastChange, singleSelectBroadcastChange } from './lib/onChangeBroadcasters';
 import { ReactResponsiveSelectProps } from './propTypes';
 import debugReportChange from './lib/debugReportChange';
 import getCustomLabelText from './lib/getCustomLabelText';
@@ -87,10 +78,7 @@ export default class ReactResponsiveSelect extends Component {
      * Exit if - the same single select option is selected as before
      * Exit if - the same multi select options are selected as before
      */
-    if (
-      selectedValue === singleSelectInitialIndex ||
-      isEqual(selectedValues, multiSelectInitialSelectedIndexes)
-    ) {
+    if (selectedValue === singleSelectInitialIndex || isEqual(selectedValues, multiSelectInitialSelectedIndexes)) {
       return false;
     }
 
@@ -102,12 +90,7 @@ export default class ReactResponsiveSelect extends Component {
         onChange,
       );
     } else {
-      singleSelectBroadcastChange(
-        prevState.singleSelectSelectedOption,
-        singleSelectSelectedOption,
-        altered,
-        onChange,
-      );
+      singleSelectBroadcastChange(prevState.singleSelectSelectedOption, singleSelectSelectedOption, altered, onChange);
     }
 
     return true;
@@ -212,9 +195,7 @@ export default class ReactResponsiveSelect extends Component {
             customLabelText={customLabelText}
             prefix={prefix}
             name={name}
-            multiSelectInitialSelectedIndexes={
-              multiSelectInitialSelectedIndexes
-            }
+            multiSelectInitialSelectedIndexes={multiSelectInitialSelectedIndexes}
             multiSelectSelectedOptions={multiSelectSelectedOptions}
             multiSelectSelectedIndexes={multiSelectSelectedIndexes}
             nextPotentialSelectionIndex={nextPotentialSelectionIndex}

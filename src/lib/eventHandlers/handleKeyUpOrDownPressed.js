@@ -1,11 +1,7 @@
 import getNextIndex from '../getNextIndex';
 import * as actionTypes from '../../constants/actionTypes';
 
-export default function handleKeyUpOrDownPressed({
-  state,
-  ReactResponsiveSelectClassRef,
-  type,
-}) {
+export default function handleKeyUpOrDownPressed({ state, ReactResponsiveSelectClassRef, type }) {
   const { isOptionsPanelOpen, disabled } = state;
 
   if (disabled) return;

@@ -42,10 +42,7 @@ export default function reducer(state, action) {
         // Single select
         singleSelectInitialIndex: initialSelectedIndex,
         singleSelectSelectedIndex: initialSelectedIndex,
-        singleSelectSelectedOption: getSingleSelectSelectedOption(
-          action.value,
-          initialSelectedIndex,
-        ),
+        singleSelectSelectedOption: getSingleSelectSelectedOption(action.value, initialSelectedIndex),
 
         // For determining highlighted item on Keyboard navigation and selection via UPDATE_VIA_PROPS
         // If UPDATE_VIA_PROPS and state exists, re-select nextPotentialSelectionIndex from state
@@ -57,10 +54,7 @@ export default function reducer(state, action) {
         multiSelectInitialSelectedIndexes: initialSelectedIndexes,
         multiSelectSelectedIndexes: initialSelectedIndexes,
         multiSelectSelectedOptions: {
-          options: getMultiSelectInitialSelectedOptions(
-            action.value,
-            initialSelectedIndexes,
-          ),
+          options: getMultiSelectInitialSelectedOptions(action.value, initialSelectedIndexes),
         },
       };
     }
@@ -79,17 +73,12 @@ export default function reducer(state, action) {
         // For determining highlighted item on Keyboard navigation
         nextPotentialSelectionIndex: (() => {
           if (state.multiselect) {
-            return state.multiSelectSelectedIndexes.length
-              ? state.multiSelectSelectedIndexes[0]
-              : 0;
+            return state.multiSelectSelectedIndexes.length ? state.multiSelectSelectedIndexes[0] : 0;
           }
           return state.nextPotentialSelectionIndex;
         })(),
 
-        singleSelectSelectedOption: getSingleSelectSelectedOption(
-          state,
-          state.nextPotentialSelectionIndex,
-        ),
+        singleSelectSelectedOption: getSingleSelectSelectedOption(state, state.nextPotentialSelectionIndex),
       };
 
       return mergeIsAlteredState(newState);
@@ -100,10 +89,7 @@ export default function reducer(state, action) {
         ...state,
         isOptionsPanelOpen: false,
         singleSelectSelectedIndex: state.nextPotentialSelectionIndex,
-        singleSelectSelectedOption: getSingleSelectSelectedOption(
-          state,
-          state.nextPotentialSelectionIndex,
-        ),
+        singleSelectSelectedOption: getSingleSelectSelectedOption(state, state.nextPotentialSelectionIndex),
       };
       return mergeIsAlteredState(newState);
     }
@@ -134,10 +120,7 @@ export default function reducer(state, action) {
         nextPotentialSelectionIndex: action.optionIndex,
         singleSelectSelectedIndex: action.optionIndex,
         isOptionsPanelOpen: false,
-        singleSelectSelectedOption: getSingleSelectSelectedOption(
-          state,
-          action.optionIndex,
-        ),
+        singleSelectSelectedOption: getSingleSelectSelectedOption(state, action.optionIndex),
       };
 
       // Set altered state
@@ -147,14 +130,11 @@ export default function reducer(state, action) {
     case actionTypes.SET_MULTISELECT_OPTIONS: {
       if (!state.noSelectionLabel) {
         const isFirstOptionInListSelected =
-          state.multiSelectSelectedIndexes[0] === 0 &&
-          state.multiSelectSelectedIndexes.length === 1;
+          state.multiSelectSelectedIndexes[0] === 0 && state.multiSelectSelectedIndexes.length === 1;
 
         // If anything selected and first option was requested, deselect all, then select first option
         const shouldDeselectAllAndSelectFirstOption =
-          state.multiSelectSelectedIndexes.length > 0 &&
-          !isFirstOptionInListSelected &&
-          action.optionIndex === 0;
+          state.multiSelectSelectedIndexes.length > 0 && !isFirstOptionInListSelected && action.optionIndex === 0;
 
         // Deselect first option when any other value is requested
         const shouldDeselectFirstOptionAndSelectRequestedOption =
@@ -174,19 +154,13 @@ export default function reducer(state, action) {
       }
 
       // Remove noSelectionLabel from selected options if sometihng is selected
-      if (
-        state.noSelectionLabel &&
-        state.multiSelectSelectedOptions.options[0].text ===
-          state.noSelectionLabel
-      ) {
+      if (state.noSelectionLabel && state.multiSelectSelectedOptions.options[0].text === state.noSelectionLabel) {
         // eslint-disable-next-line no-param-reassign
         state.multiSelectSelectedOptions.options = [];
       }
 
       // Find index of requested option
-      const indexLocation = state.multiSelectSelectedIndexes.indexOf(
-        action.optionIndex,
-      );
+      const indexLocation = state.multiSelectSelectedIndexes.indexOf(action.optionIndex);
 
       // If requested item does not exist, add it. Else remove it
       let nextState = {
@@ -205,18 +179,12 @@ export default function reducer(state, action) {
       if (nextState.multiSelectSelectedOptions.options.length === 0) {
         // Reset to noSelectionLabel if user has deselected all items and has set a `noSelectionLabel` prop
         if (state.noSelectionLabel) {
-          const initialSelectedIndexes = getMultiSelectSelectedValueIndexes(
-            state.options,
-            state.selectedValues,
-          );
+          const initialSelectedIndexes = getMultiSelectSelectedValueIndexes(state.options, state.selectedValues);
           nextState = {
             ...nextState,
             nextPotentialSelectionIndex: -1,
             multiSelectSelectedOptions: {
-              options: getMultiSelectInitialSelectedOptions(
-                state,
-                initialSelectedIndexes,
-              ),
+              options: getMultiSelectInitialSelectedOptions(state, initialSelectedIndexes),
             },
           };
         } else {

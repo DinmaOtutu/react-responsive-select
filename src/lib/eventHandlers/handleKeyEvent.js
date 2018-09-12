@@ -6,26 +6,12 @@ import handleEnterPressed from './handleEnterPressed';
 import handleClick from './handleClick';
 import handleKeyUpOrDownPressed from './handleKeyUpOrDownPressed';
 
-export default function handleKeyEvent({
-  event,
-  state,
-  props,
-  ReactResponsiveSelectClassRef,
-}) {
+export default function handleKeyEvent({ event, state, props, ReactResponsiveSelectClassRef }) {
   const { multiselect, isOptionsPanelOpen, disabled } = state;
 
   if (disabled) return;
 
-  preventDefaultForKeyCodes(
-    [
-      keyCodes.ENTER,
-      keyCodes.SPACE,
-      keyCodes.ESCAPE,
-      keyCodes.UP,
-      keyCodes.DOWN,
-    ],
-    event,
-  );
+  preventDefaultForKeyCodes([keyCodes.ENTER, keyCodes.SPACE, keyCodes.ESCAPE, keyCodes.UP, keyCodes.DOWN], event);
 
   /* handle alpha-nemeric key press */
   if (/^[a-z0-9]+$/.test(event.key)) {
@@ -42,9 +28,8 @@ export default function handleKeyEvent({
          * TODO add a test for this
          */
         if (multiselect) {
-          ReactResponsiveSelectClassRef.updateState(
-            { type: actionTypes.SET_OPTIONS_PANEL_CLOSED },
-            () => ReactResponsiveSelectClassRef.focusButton(),
+          ReactResponsiveSelectClassRef.updateState({ type: actionTypes.SET_OPTIONS_PANEL_CLOSED }, () =>
+            ReactResponsiveSelectClassRef.focusButton(),
           );
         }
       }
@@ -74,9 +59,8 @@ export default function handleKeyEvent({
 
     case keyCodes.ESCAPE:
       /* remove focus from the panel when focussed */
-      ReactResponsiveSelectClassRef.updateState(
-        { type: actionTypes.SET_OPTIONS_PANEL_CLOSED_NO_SELECTION },
-        () => ReactResponsiveSelectClassRef.focusButton(),
+      ReactResponsiveSelectClassRef.updateState({ type: actionTypes.SET_OPTIONS_PANEL_CLOSED_NO_SELECTION }, () =>
+        ReactResponsiveSelectClassRef.focusButton(),
       );
       break;
 

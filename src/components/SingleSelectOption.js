@@ -9,23 +9,14 @@ export default class SingleSelectOption extends Component {
   }
 
   componentDidUpdate() {
-    const {
-      index,
-      isOptionsPanelOpen,
-      nextPotentialSelectionIndex,
-    } = this.props;
+    const { index, isOptionsPanelOpen, nextPotentialSelectionIndex } = this.props;
     if (index === nextPotentialSelectionIndex && isOptionsPanelOpen) {
       this.optionRef.current.focus();
     }
   }
 
   render() {
-    const {
-      index,
-      nextPotentialSelectionIndex,
-      option,
-      singleSelectSelectedIndex,
-    } = this.props;
+    const { index, nextPotentialSelectionIndex, option, singleSelectSelectedIndex } = this.props;
 
     return (
       <li
@@ -38,11 +29,7 @@ export default class SingleSelectOption extends Component {
         className={singleline(`
           rrs__option
           ${singleSelectSelectedIndex === index ? 'rrs__option--selected' : ''}
-          ${
-            nextPotentialSelectionIndex === index
-              ? 'rrs__option--next-selection'
-              : ''
-          }
+          ${nextPotentialSelectionIndex === index ? 'rrs__option--next-selection' : ''}
           ${option.disabled === true ? 'rrs__option--disabled' : ''}
         `)}
       >

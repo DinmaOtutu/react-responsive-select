@@ -19,11 +19,7 @@ export default class SingleSelect extends Component {
       there has been an interaction, the value has changed,
       or isOptionsPanelOpen and nextPotentialSelectionIndex === -1
     */
-    const {
-      singleSelectSelectedIndex,
-      isOptionsPanelOpen,
-      nextPotentialSelectionIndex,
-    } = this.props;
+    const { singleSelectSelectedIndex, isOptionsPanelOpen, nextPotentialSelectionIndex } = this.props;
 
     if (
       !isOptionsPanelOpen &&
@@ -39,20 +35,12 @@ export default class SingleSelect extends Component {
   }
 
   getCustomLabel() {
-    const {
-      prefix,
-      name,
-      singleSelectSelectedOption,
-      caretIcon,
-      customLabelText,
-    } = this.props;
+    const { prefix, name, singleSelectSelectedOption, caretIcon, customLabelText } = this.props;
 
     return (
       <div className="rrs__label">
         <span
-          aria-label={`${prefix ? `${prefix} ` : ''}${
-            singleSelectSelectedOption.text
-          } selected`}
+          aria-label={`${prefix ? `${prefix} ` : ''}${singleSelectSelectedOption.text} selected`}
           className="rrs__label__text"
           id={`rrs-${name}-label`}
         >
@@ -76,11 +64,7 @@ export default class SingleSelect extends Component {
     if (singleSelectSelectedIndex === -1) {
       return (
         <div className="rrs__label">
-          <span
-            aria-label={noSelectionLabel}
-            className="rrs__label__text"
-            id={`rrs-${name}-label`}
-          >
+          <span aria-label={noSelectionLabel} className="rrs__label__text" id={`rrs-${name}-label`}>
             {prefix && <span>{prefix}</span>}
             {noSelectionLabel}
           </span>
@@ -92,18 +76,12 @@ export default class SingleSelect extends Component {
     return (
       <div className="rrs__label">
         <span
-          aria-label={`${prefix ? `${prefix} ` : ''}${
-            singleSelectSelectedOption.text
-          } selected`}
+          aria-label={`${prefix ? `${prefix} ` : ''}${singleSelectSelectedOption.text} selected`}
           className="rrs__label__text"
           id={`rrs-${name}-label`}
         >
           {prefix && <span>{prefix}</span>}
-          {singleSelectSelectedOption.text ? (
-            singleSelectSelectedOption.text
-          ) : (
-            <div>&nbsp;</div>
-          )}
+          {singleSelectSelectedOption.text ? singleSelectSelectedOption.text : <div>&nbsp;</div>}
         </span>
         {caretIcon && caretIcon}
       </div>
@@ -142,13 +120,7 @@ export default class SingleSelect extends Component {
 
           {!customLabelText && this.getDefaultLabel()}
 
-          {name && (
-            <input
-              type="hidden"
-              name={name}
-              value={singleSelectSelectedOption.value}
-            />
-          )}
+          {name && <input type="hidden" name={name} value={singleSelectSelectedOption.value} />}
         </div>
 
         <ul

@@ -11,27 +11,18 @@ const scrollIntoViewIIHOC = WrappedComponent =>
   */
 
     scrollIntoView() {
-      const {
-        scrollIntoViewElementSelector,
-        scrollIntoViewScrollPaneRef,
-        isDragging,
-      } = this.props;
-      this.scrollPaneDOM =
-        this.scrollPaneDOM || scrollIntoViewScrollPaneRef.current;
+      const { scrollIntoViewElementSelector, scrollIntoViewScrollPaneRef, isDragging } = this.props;
+      this.scrollPaneDOM = this.scrollPaneDOM || scrollIntoViewScrollPaneRef.current;
 
       this.elementDOM = this.elementDOM || this.optionRef.current;
 
-      const isCurrentHighlightedOption = containsClassName(
-        this.elementDOM,
-        scrollIntoViewElementSelector,
-      );
+      const isCurrentHighlightedOption = containsClassName(this.elementDOM, scrollIntoViewElementSelector);
 
       if (isDragging === true) this.dontScrollIntoView = true; // if dragged, it is a touch screen - kill scrollIntoView
 
       if (!this.dontScrollIntoView && isCurrentHighlightedOption) {
         const topOfScrollPane = this.scrollPaneDOM.getBoundingClientRect().top;
-        const bottomOfScrollPane = this.scrollPaneDOM.getBoundingClientRect()
-          .bottom;
+        const bottomOfScrollPane = this.scrollPaneDOM.getBoundingClientRect().bottom;
         const topOfElement = this.elementDOM.getBoundingClientRect().top;
         const bottomOfElement = this.elementDOM.getBoundingClientRect().bottom;
 

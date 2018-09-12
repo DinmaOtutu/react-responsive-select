@@ -33,11 +33,7 @@ class ContainerComponent extends Component {
   // eslint-disable-line
   render() {
     return (
-      <div
-        ref={this.containerRef}
-        className="container"
-        style={{ height: '300px', overflow: 'auto' }}
-      >
+      <div ref={this.containerRef} className="container" style={{ height: '300px', overflow: 'auto' }}>
         {[0, 1, 2, 3, 4, 5].map(v => (
           <ItemComponentHOC
             key={v}
@@ -61,8 +57,7 @@ describe('Scroll into view', () => {
 
   beforeAll(() => {
     containerComponent = mount(<ContainerComponent selectedItem={1} />);
-    containerComponentsContainerRef = containerComponent.instance().containerRef
-      .current;
+    containerComponentsContainerRef = containerComponent.instance().containerRef.current;
     containerComponentsContainerRef.getBoundingClientRect = () => ({
       width: 300,
       height: 300,

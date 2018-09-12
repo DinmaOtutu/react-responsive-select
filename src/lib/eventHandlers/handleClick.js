@@ -1,18 +1,8 @@
 import containsClassName from '../containsClassName';
 import * as actionTypes from '../../constants/actionTypes';
 
-export default function handleClick({
-  event,
-  state,
-  ReactResponsiveSelectClassRef,
-}) {
-  const {
-    multiselect,
-    isOptionsPanelOpen,
-    isDragging,
-    disabled,
-    options,
-  } = state;
+export default function handleClick({ event, state, ReactResponsiveSelectClassRef }) {
+  const { multiselect, isOptionsPanelOpen, isDragging, disabled, options } = state;
 
   if (disabled) return;
 
@@ -34,9 +24,7 @@ export default function handleClick({
     /* Select option index, if user selected option */
     if (containsClassName(event.target, 'rrs__option')) {
       ReactResponsiveSelectClassRef.updateState({
-        type: multiselect
-          ? actionTypes.SET_MULTISELECT_OPTIONS
-          : actionTypes.SET_SINGLESELECT_OPTIONS,
+        type: multiselect ? actionTypes.SET_MULTISELECT_OPTIONS : actionTypes.SET_SINGLESELECT_OPTIONS,
         optionIndex,
       });
 
@@ -46,9 +34,7 @@ export default function handleClick({
     /* Else user clicked close or open the options panel */
     ReactResponsiveSelectClassRef.updateState(
       {
-        type: isOptionsPanelOpen
-          ? actionTypes.SET_OPTIONS_PANEL_CLOSED
-          : actionTypes.SET_OPTIONS_PANEL_OPEN,
+        type: isOptionsPanelOpen ? actionTypes.SET_OPTIONS_PANEL_CLOSED : actionTypes.SET_OPTIONS_PANEL_OPEN,
       },
       () => {
         // After state update, check if focus should be moved to the button

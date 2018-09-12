@@ -5,9 +5,7 @@ export default ({ event, state, ReactResponsiveSelectClassRef }) => {
 
   if (disabled) return;
 
-  const optionIndex = options
-    .map(option => option.text.toLowerCase().charAt(0))
-    .indexOf(event.key);
+  const optionIndex = options.map(option => option.text.toLowerCase().charAt(0)).indexOf(event.key);
 
   if (optionIndex > -1) {
     ReactResponsiveSelectClassRef.updateState({

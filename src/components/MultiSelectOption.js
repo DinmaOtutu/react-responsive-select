@@ -9,23 +9,14 @@ export default class MultiSelectOption extends Component {
   }
 
   componentDidUpdate() {
-    const {
-      index,
-      isOptionsPanelOpen,
-      nextPotentialSelectionIndex,
-    } = this.props;
+    const { index, isOptionsPanelOpen, nextPotentialSelectionIndex } = this.props;
     if (index === nextPotentialSelectionIndex && isOptionsPanelOpen) {
       this.optionRef.current.focus();
     }
   }
 
   render() {
-    const {
-      index,
-      multiSelectSelectedIndexes,
-      nextPotentialSelectionIndex,
-      option,
-    } = this.props;
+    const { index, multiSelectSelectedIndexes, nextPotentialSelectionIndex, option } = this.props;
     const isSelected = multiSelectSelectedIndexes.some(i => i === index);
 
     return (
@@ -42,11 +33,7 @@ export default class MultiSelectOption extends Component {
         className={singleline(`
           rrs__option
           ${isSelected ? 'rrs__option--selected' : ''}
-          ${
-            nextPotentialSelectionIndex === index
-              ? 'rrs__option--next-selection'
-              : ''
-          }
+          ${nextPotentialSelectionIndex === index ? 'rrs__option--next-selection' : ''}
           ${option.disabled === true ? 'rrs__option--disabled' : ''}
         `)}
       >

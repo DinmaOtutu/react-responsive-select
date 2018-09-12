@@ -15,7 +15,9 @@ export default class CodeBlock extends Component {
       <div className="code-block__expander">
         <button
           className="code-block__expander__button"
-          onClick={() => { this.setState({ isExpanded: !isExpanded }); }}
+          onClick={() => {
+            this.setState({ isExpanded: !isExpanded });
+          }}
           type="button"
         >
           {!isExpanded ? 'Expand' : 'Close'}

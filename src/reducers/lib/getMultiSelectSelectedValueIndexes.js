@@ -1,15 +1,9 @@
-export default function getMultiSelectSelectedValueIndexes(
-  options,
-  selectedValues = [],
-  noSelectionLabel,
-) {
+export default function getMultiSelectSelectedValueIndexes(options, selectedValues = [], noSelectionLabel) {
   const result = options
     .map(
       (option, optionIndex) =>
         /* return the index of the found item, if found */
-        selectedValues.some(selected => option.value === selected)
-          ? optionIndex
-          : undefined,
+        selectedValues.some(selected => option.value === selected) ? optionIndex : undefined,
     )
     .filter(r => r !== undefined);
 

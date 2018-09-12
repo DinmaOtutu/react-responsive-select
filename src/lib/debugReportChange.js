@@ -13,11 +13,7 @@ export default function debugReportChange(name, action, nextState) {
         (key, value) => {
           if (typeof value === 'object' && value !== null) {
             // If circular reference found then discard it
-            if (
-              cache.indexOf(value) !== -1 ||
-              knownCircularKeys.some(k => key === k)
-            )
-              return;
+            if (cache.indexOf(value) !== -1 || knownCircularKeys.some(k => key === k)) return;
             cache.push(value);
           }
           // eslint-disable-next-line

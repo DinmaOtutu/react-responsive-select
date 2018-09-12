@@ -4,7 +4,6 @@ const path = require('path');
 const DEV = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-
   devServer: {
     inline: true,
   },
@@ -24,14 +23,16 @@ module.exports = {
   },
 
   module: {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: path.resolve(__dirname, 'node_modules'),
-      options: {
-        presets: ['env'],
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: path.resolve(__dirname, 'node_modules'),
+        options: {
+          presets: ['env'],
+        },
       },
-    }],
+    ],
   },
 
   plugins: [

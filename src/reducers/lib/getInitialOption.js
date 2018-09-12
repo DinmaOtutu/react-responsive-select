@@ -14,9 +14,6 @@ export default function getInitialOption(state, initialSelectedIndex = 0) {
     },
     nextPotentialSelectionIndex: 0,
 
-    singleSelectSelectedOption: getSingleSelectSelectedOption(
-      state,
-      initialSelectedIndex,
-    ),
+    singleSelectSelectedOption: getSingleSelectSelectedOption(state, initialSelectedIndex),
   };
 }

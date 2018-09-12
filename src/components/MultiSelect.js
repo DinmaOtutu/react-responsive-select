@@ -19,10 +19,7 @@ export default class MultiSelect extends Component {
     if (
       !this.props.isOptionsPanelOpen &&
       prevProps.isOptionsPanelOpen &&
-      !isEqual(
-        prevProps.multiSelectSelectedIndexes,
-        this.props.multiSelectSelectedIndexes,
-      )
+      !isEqual(prevProps.multiSelectSelectedIndexes, this.props.multiSelectSelectedIndexes)
     ) {
       this.optionsButton.current.focus();
     }
@@ -33,12 +30,8 @@ export default class MultiSelect extends Component {
     const selectedOptionsLength = multiSelectSelectedOptions.options.length;
     return singleline(`
       Checkbox group ${prefix ? `${prefix} ` : ''} has
-      ${selectedOptionsLength} item${
-      selectedOptionsLength === 1 ? '' : 's'
-    } selected.
-      Selected option${selectedOptionsLength === 1 ? '' : 's'} ${
-      selectedOptionsLength === 1 ? 'is' : 'are'
-    }
+      ${selectedOptionsLength} item${selectedOptionsLength === 1 ? '' : 's'} selected.
+      Selected option${selectedOptionsLength === 1 ? '' : 's'} ${selectedOptionsLength === 1 ? 'is' : 'are'}
       ${multiSelectSelectedOptions.options.map(v => v.text).join(' and ')}
     `);
   }
@@ -75,11 +68,7 @@ export default class MultiSelect extends Component {
         >
           {customLabelText && (
             <div className="rrs__label">
-              <span
-                aria-label={this.getAriaLabel()}
-                className="rrs__label__text"
-                id={`rrs-${name}-label`}
-              >
+              <span aria-label={this.getAriaLabel()} className="rrs__label__text" id={`rrs-${name}-label`}>
                 {customLabelText}
               </span>
               {caretIcon && caretIcon}
@@ -88,19 +77,11 @@ export default class MultiSelect extends Component {
 
           {!customLabelText && (
             <div className="rrs__label">
-              <span
-                aria-label={this.getAriaLabel()}
-                className="rrs__label__text"
-                id={`rrs-${name}-label`}
-              >
+              <span aria-label={this.getAriaLabel()} className="rrs__label__text" id={`rrs-${name}-label`}>
                 <span className="rrs__multiselect-label">
                   <span className="rrs__multiselect-label__text">
                     {`${prefix ? `${prefix} ` : ''}
-                  ${
-                    multiSelectSelectedOptions.options.length > 0
-                      ? multiSelectSelectedOptions.options[0].text
-                      : ''
-                  }`}
+                  ${multiSelectSelectedOptions.options.length > 0 ? multiSelectSelectedOptions.options[0].text : ''}`}
                   </span>
                   {multiSelectSelectedOptions.options.length > 1 && (
                     <span className="rrs__multiselect-label__badge">
@@ -114,13 +95,7 @@ export default class MultiSelect extends Component {
           )}
 
           {name && (
-            <input
-              type="hidden"
-              name={name}
-              value={[
-                multiSelectSelectedOptions.options.map(v => v.value),
-              ].join(',')}
-            />
+            <input type="hidden" name={name} value={[multiSelectSelectedOptions.options.map(v => v.value)].join(',')} />
           )}
         </div>
 

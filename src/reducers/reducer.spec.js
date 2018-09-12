@@ -8,10 +8,7 @@ describe('reducer', () => {
       type: actionTypes.INITIALISE,
       value: {
         ...initialState,
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         selectedValue: 'fiat',
         name: 'thing',
       },
@@ -64,10 +61,7 @@ describe('reducer', () => {
     const mockState = {
       ...initialState,
       name: 'make1',
-      options: [
-        { text: 'Any', value: 'null' },
-        { text: 'Fiat', value: 'fiat' },
-      ],
+      options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
     };
     const result = reducer(mockState, {
       type: actionTypes.SET_SINGLESELECT_OPTIONS,
@@ -93,18 +87,11 @@ describe('reducer', () => {
         name: 'thing',
         multiselect: true,
         altered: false,
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-          { text: 'Mazda', value: 'mazda' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }, { text: 'Mazda', value: 'mazda' }],
         multiSelectInitialSelectedIndexes: [1, 2],
         multiSelectSelectedIndexes: [1, 2],
         multiSelectSelectedOptions: {
-          options: [
-            { name: 'make2', text: 'Fiat', value: 'fiat' },
-            { name: 'make2', text: 'Mazda', value: 'mazda' },
-          ],
+          options: [{ name: 'make2', text: 'Fiat', value: 'fiat' }, { name: 'make2', text: 'Mazda', value: 'mazda' }],
         },
         nextPotentialSelectionIndex: 2,
       };
@@ -118,11 +105,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: true,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-          { text: 'Mazda', value: 'mazda' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }, { text: 'Mazda', value: 'mazda' }],
         multiSelectInitialSelectedIndexes: [1, 2],
         multiSelectSelectedIndexes: [0],
         multiSelectSelectedOptions: {
@@ -142,10 +125,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: false,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         multiSelectInitialSelectedIndexes: [0],
         multiSelectSelectedIndexes: [0],
         multiSelectSelectedOptions: {
@@ -163,10 +143,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: true,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         multiSelectInitialSelectedIndexes: [0],
         multiSelectSelectedIndexes: [1],
         multiSelectSelectedOptions: {
@@ -181,11 +158,7 @@ describe('reducer', () => {
         multiselect: true,
         name: 'thing',
         altered: false,
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-          { text: 'Mazda', value: 'mazda' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }, { text: 'Mazda', value: 'mazda' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [1],
         multiSelectSelectedOptions: {
@@ -202,19 +175,12 @@ describe('reducer', () => {
       expect(result).toMatchObject({
         multiselect: true,
         altered: true,
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-          { text: 'Mazda', value: 'mazda' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }, { text: 'Mazda', value: 'mazda' }],
         name: 'thing',
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [1, 2],
         multiSelectSelectedOptions: {
-          options: [
-            { name: 'thing', text: 'Fiat', value: 'fiat' },
-            { name: 'thing', text: 'Mazda', value: 'mazda' },
-          ],
+          options: [{ name: 'thing', text: 'Fiat', value: 'fiat' }, { name: 'thing', text: 'Mazda', value: 'mazda' }],
         },
         nextPotentialSelectionIndex: 2,
       });
@@ -224,18 +190,11 @@ describe('reducer', () => {
       const state = {
         multiselect: true,
         altered: false,
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-          { text: 'Mazda', value: 'mazda' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }, { text: 'Mazda', value: 'mazda' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [1, 2],
         multiSelectSelectedOptions: {
-          options: [
-            { name: 'make2', text: 'Fiat', value: 'fiat' },
-            { name: 'make2', text: 'Mazda', value: 'mazda' },
-          ],
+          options: [{ name: 'make2', text: 'Fiat', value: 'fiat' }, { name: 'make2', text: 'Mazda', value: 'mazda' }],
         },
         nextPotentialSelectionIndex: 2,
       };
@@ -248,11 +207,7 @@ describe('reducer', () => {
       expect(result).toMatchObject({
         multiselect: true,
         altered: false,
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-          { text: 'Mazda', value: 'mazda' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }, { text: 'Mazda', value: 'mazda' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [1],
         multiSelectSelectedOptions: {
@@ -267,10 +222,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: false,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [1],
         multiSelectSelectedOptions: {
@@ -288,10 +240,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: true,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [0],
         multiSelectSelectedOptions: {
@@ -312,10 +261,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: false,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [1],
         multiSelectSelectedOptions: {
@@ -334,10 +280,7 @@ describe('reducer', () => {
         multiselect: true,
         altered: true,
         name: 'thing',
-        options: [
-          { text: 'Any', value: 'null' },
-          { text: 'Fiat', value: 'fiat' },
-        ],
+        options: [{ text: 'Any', value: 'null' }, { text: 'Fiat', value: 'fiat' }],
         multiSelectInitialSelectedIndexes: [1],
         multiSelectSelectedIndexes: [],
         multiSelectSelectedOptions: {

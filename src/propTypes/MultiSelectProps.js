@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 export const MultiSelectProps = {
   altered: PropTypes.bool,
   caretIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  customLabelText: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-    PropTypes.element,
-  ]),
+  customLabelText: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.element]),
   disabled: PropTypes.bool,
   multiSelectInitialSelectedIndexes: PropTypes.arrayOf(PropTypes.number),
   multiSelectSelectedIndexes: PropTypes.arrayOf(PropTypes.number),
